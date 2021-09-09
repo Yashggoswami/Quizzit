@@ -1,0 +1,26 @@
+{
+  "name": "quizzit",
+  "version": "1.0.0",
+  "description": "online quiz application build on express.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yashggoswami/Quizzit.git"
+  },
+  "author": "Yash Goswami",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yashggoswami/Quizzit/issues"
+  },
+  "homepage": "https://github.com/Yashggoswami/Quizzit#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.2",
+    "nodemon": "^2.0.12"
+  }
+}
