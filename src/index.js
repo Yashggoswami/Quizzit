@@ -1,12 +1,12 @@
 const express = require('express'),
     app = express(),
     hbs = require('hbs'),
-    error_handler = require('./src/services/error_handler')
+    error_handler = require('./services/error_handler')
 
 
 app.use(express.static("src/public"))
 // directing to routes directory for routing purpose
-app.use('/',require('./src/routes'))
+app.use('/',require('./routes'))
 
 app.set('views','src/views')
 app.set('view engine','hbs')
