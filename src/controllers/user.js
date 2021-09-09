@@ -1,6 +1,10 @@
 // user authentication i.e. login, register logout work will be done here
-login = (err,req,res,next)=>{
+login = (req,res)=>{
 res.render("login")
 }
 
-module.exports = login
+register = (req,res) =>{
+    res.render("register")
+}
+
+module.exports = { login: login,register:register }
