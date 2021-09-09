@@ -4,7 +4,8 @@
   "description": "online quiz application build on express.js",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,10 @@
     "url": "https://github.com/Yashggoswami/Quizzit/issues"
   },
   "homepage": "https://github.com/Yashggoswami/Quizzit#readme",
-  "dependencies": {
-    "express": "^4.17.1"
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.2",
+    "nodemon": "^2.0.12"
   }
 }
