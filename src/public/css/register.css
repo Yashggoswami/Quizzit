@@ -1,8 +1,13 @@
 body{
-    background-color: #dee9ff;
+    background-color: white;
+}
+.container{
+    padding-top:6rem;
 }
 
 .registration-form{
+    /* margin:10px; */
+    background-color: #5691ff;
 	padding: 50px 0;
 }
 
