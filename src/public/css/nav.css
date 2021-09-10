@@ -31,7 +31,7 @@ nav{
 
 .bt{
     text-decoration: none;
-    /* color:white; */
+    color:white;
 }
 /*Styling Links*/
 .nav-links{
@@ -81,6 +81,7 @@ nav{
 }
 .login-button:hover {
     color: #131418;
+    text-decoration: none;
     background-color: #f2f5f7;
     border:1.5px solid #f2f5f7;
     transition: all ease-in-out 350ms;
@@ -95,6 +96,7 @@ nav{
 }
 .join-button:hover {
     color: #131418;
+    text-decoration: none;
     background-color: #f2f5f7;
     border:1.5px solid #f2f5f7;
     transition: all ease-in-out 350ms;

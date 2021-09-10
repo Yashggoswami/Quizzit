@@ -6,16 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizzit</title>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
      <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <base href="/">
 </head>
 <body>
     {{>header}}
    <div class="container">
-            <a href="/" class="">yash</a>
-           <h1 class="head1">yash goswami</h1>
+           <div class="registration-form">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control item" id="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control item" id="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-block create-account">login</button>
+                </div>
+                <div class="form-group">
+                    <p style="align-content:center">
+                        <a href="/signup">
+                           Create an account?
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
    </div>
-   <script src="/js/nav.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/register.js"></script>
 </body>
 </html>
