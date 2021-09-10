@@ -18,15 +18,15 @@
     {{>header}}
    <div class="container">
            <div class="registration-form">
-            <form>
+            <form action='/authenticate' method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control item" id="username" placeholder="Username">
+                    <input type="text" class="form-control item" name="username" id="username" placeholder="Username">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control item" id="password" placeholder="Password">
+                    <input type="password" class="form-control item" name="password" id="password" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-block create-account">login</button>
+                    <button type="submit" class="btn btn-block create-account">login</button>
                 </div>
                 <div class="form-group">
                     <p style="align-content:center">
