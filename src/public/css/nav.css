@@ -29,6 +29,10 @@ nav{
     width: 5rem;
 }
 
+.bt{
+    text-decoration: none;
+    /* color:white; */
+}
 /*Styling Links*/
 .nav-links{
     display: flex;
@@ -39,18 +43,18 @@ nav{
     align-items: center;
     text-transform: uppercase;
 }
-.nav-links li a{
+.nav-links li .navl{
     color:#f2f5f7;
     text-decoration: none;
     margin: 0 0.7vw;
 }
-.nav-links li a:hover {
+.nav-links li navl:hover {
     color: #61DAFB;
 }
 .nav-links li {
     position: relative;
 }
-.nav-links li a::before {
+.nav-links li navl::before {
     content: "";
     display: block;
     height: 3px;
@@ -60,7 +64,7 @@ nav{
     transition: all ease-in-out 250ms;
     margin: 0 0 0 10%;
 }
-.nav-links li a:hover::before{
+.nav-links li navl:hover::before{
     width: 80%;
 }
 
@@ -82,17 +86,16 @@ nav{
     transition: all ease-in-out 350ms;
 }
 .join-button{
-    color: #131418;
-    background-color: #61DAFB;
-    border: 1.5px solid #61DAFB;
+    background-color: transparent;
+    border:1.5px solid #f2f5f7; 
     border-radius: 2em;
     padding: 0.6rem 0.8rem;
     font-size: 1rem;
     cursor: pointer;
 }
 .join-button:hover {
-    color: #f2f5f7;
-    background-color: transparent;
+    color: #131418;
+    background-color: #f2f5f7;
     border:1.5px solid #f2f5f7;
     transition: all ease-in-out 350ms;
 }
@@ -182,3 +185,4 @@ nav{
 .toggle .line3{
     transform: rotate(45deg) translate(-5px,-6px);
 }
+
