@@ -4,7 +4,8 @@ const express = require('express'),
     error_handler = require('./services/error_handler')
 
 
-app.use(express.static("src/public"))
+ app.use(express.static("src/public"))
+//app.use(express.static(__dirname + 'src/public'))
 // directing to routes directory for routing purpose
 app.use('/',require('./routes'))
 
