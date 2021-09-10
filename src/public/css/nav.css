@@ -71,35 +71,32 @@ nav{
 /*Styling Buttons*/
 .login-button{
     background-color: transparent;
-    border: 1.5px solid #f2f5f7;
+    border: 1.5px solid #030303; 
     border-radius: 2em;
     padding: 0.6rem 0.8rem;
     margin-left: 2vw;
     font-size: 1rem;
     cursor: pointer;
+    text-transform: uppercase;
 
 }
-.login-button:hover {
-    color: #131418;
+.join-button:visited{
+text-decoration: none;
+
+}
+a:hover{
     text-decoration: none;
-    background-color: #f2f5f7;
-    border:1.5px solid #f2f5f7;
-    transition: all ease-in-out 350ms;
+    color: white;
 }
 .join-button{
+    
     background-color: transparent;
-    border:1.5px solid #f2f5f7; 
+    border:1.5px solid #030303; 
     border-radius: 2em;
     padding: 0.6rem 0.8rem;
     font-size: 1rem;
     cursor: pointer;
-}
-.join-button:hover {
-    color: #131418;
-    text-decoration: none;
-    background-color: #f2f5f7;
-    border:1.5px solid #f2f5f7;
-    transition: all ease-in-out 350ms;
+    text-transform: uppercase;
 }
 
 /*Styling Hamburger Icon*/
