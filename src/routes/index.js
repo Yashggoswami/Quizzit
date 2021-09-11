@@ -10,7 +10,7 @@ app.get('/signup',user.register)
 app.get('/',(req,res) => {res.render('dashboard')})
 
 app.post('/authenticate', user.authenticateSchema, user.authenticate);
-app.post('/createAccount', user.registerSchema, user.register);
+app.post('/createAccount', user.registerSchema, user.registeruser);
 
 
 

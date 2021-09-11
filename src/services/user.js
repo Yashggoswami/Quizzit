@@ -1,6 +1,6 @@
 const config = require('../../config.json');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const db = require('./connections');
 
 module.exports = {
@@ -36,7 +36,6 @@ async function create(params) {
     if (await db.User.findOne({ where: { username: params.username } })) {
         throw 'Username "' + params.username + '" is already taken';
     }
-
     // hash password
     if (params.password) {
         params.hash = await bcrypt.hash(params.password, 10);

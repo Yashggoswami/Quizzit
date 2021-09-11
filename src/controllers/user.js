@@ -33,13 +33,12 @@ registerSchema = (req, res, next) => {
     const schema = Joi.object({
         username: Joi.string().required(),
         email: Joi.string().required(),
-        password: Joi.string().min(6).required()
+        hash: Joi.string().min(6).required()
     });
     validateRequest(req, next, schema);
 }
 
 registeruser = (req, res, next) => {
-    console.log("inside")
     userService.create(req.body)
         .then(() => res.json({ message: 'Registration successful' }))
         .catch(next);
