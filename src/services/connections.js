@@ -21,7 +21,12 @@ async function initialize() {
 
      // init models and add them to the exported db object
      db.User = require('../models/user')(sequelize);
+     db.Category = require('../models/category')(sequelize)
+     db.Question = require('../models/question')(sequelize)
 
+    db.Category.hasMany(db.Question);
+    db.Question.belongsTo(db.Category);
+    
      // sync all models with database
      await sequelize.sync();
 
