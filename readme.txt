@@ -12,3 +12,19 @@ project_docs = added pdf for better project understanding
 
 
 
+9/11
+
+manish work assignment = 
+
+1. to handle all the query on same page rather than taking to different page
+i.e. "user name or password incorrect" must be displayed on same login page
+
+** sweet alert - https://sweetalert2.github.io/
+
+2. find and remove the unnecessary output on console coming while running the server
+
+3. to study the session variable working
+
+
+
+
