@@ -31,7 +31,10 @@ nav{
 
 .bt{
     text-decoration: none;
-    color:white;
+     color:rgb(255, 255, 255);
+}
+.login-button{
+    background-color: black;
 }
 /*Styling Links*/
 .nav-links{
@@ -69,30 +72,18 @@ nav{
 }
 
 /*Styling Buttons*/
-.login-button{
-    background-color: transparent;
-    border: 1.5px solid #030303; 
-    border-radius: 2em;
-    padding: 0.6rem 0.8rem;
-    margin-left: 2vw;
-    font-size: 1rem;
-    cursor: pointer;
-    text-transform: uppercase;
 
-}
 .join-button:visited{
 text-decoration: none;
 
 }
-a:hover{
-    text-decoration: none;
-    color: white;
+
 }
 .join-button{
-    
-    background-color: transparent;
+    text-decoration: none;
+    background-color: black;
     border:1.5px solid #030303; 
-    border-radius: 2em;
+    border-color: black;
     padding: 0.6rem 0.8rem;
     font-size: 1rem;
     cursor: pointer;

@@ -84,10 +84,7 @@ body{
     line-height: 45px;
 }
 
-.registration-form .social-icons a:hover{
-    text-decoration: none;
-    opacity: 0.6;
-}
+
 
 @media (max-width: 576px) {
     .registration-form form{
