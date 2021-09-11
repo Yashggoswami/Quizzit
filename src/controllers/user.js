@@ -10,6 +10,7 @@ login = (req, res) => {
     res.render("login")
 }
 
+
 register = (req, res) => {
     res.render("register")
 }
@@ -82,5 +83,5 @@ registeruser = (req, res, next) => {
 //         .catch(next);
 // }
 
-module.exports = { login: login, register: register,authenticate: authenticate,
+module.exports = {login: login, register: register,authenticate: authenticate,
     authenticateSchema:authenticateSchema,registerSchema:registerSchema,registeruser:registeruser}

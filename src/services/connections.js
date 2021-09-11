@@ -3,15 +3,20 @@ const config = require('../../config.json')
 const mysql = require('mysql2/promise')
 const { Sequelize } = require('sequelize')
 
-module.exports = db = {};
+module.exports = db = {db:initialize,getMysqlPool:getMysqlPool};
 
 initialize();
 
+async function getMysqlPool() {
+const { host, port, user, password, database } = config.database;
+    return await mysql.createConnection({ host, port, user, password });
+   
+  }
+
 async function initialize() {
     const { host, port, user, password, database } = config.database;
-
+    var connection = await getMysqlPool();
     //connection to mysql server done
-    const connection = await mysql.createConnection({ host, port, user, password });
 
     //create database if not exist
     await connection.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`);
