@@ -5,7 +5,7 @@ const { Sequelize } = require('sequelize')
 
 module.exports = db = {db:initialize,getMysqlPool:getMysqlPool};
 
-// initialize();
+initialize();
 
 async function getMysqlPool() {
 const { host, port, user, password, database } = config.database;
@@ -26,11 +26,11 @@ async function initialize() {
 
      // init models and add them to the exported db object
      db.User = require('../models/user')(sequelize);
-     db.Category = require('../models/category')(sequelize)
+    //  db.Category = require('../models/category')(sequelize)
      db.Question = require('../models/question')(sequelize)
 
-    db.Category.hasMany(db.Question);
-    db.Question.belongsTo(db.Category);
+    // db.Category.hasMany(db.Question);
+    // db.Question.belongsTo(db.Category);
     
      // sync all models with database
      await sequelize.sync();

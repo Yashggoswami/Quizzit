@@ -33,8 +33,9 @@ function model(sequelize) {
         option4:{
             type:DataTypes.STRING,
             allowNull:false
-        } 
+        }
+
     };
 
-    return sequelize.define('Question', attributes);
+    return sequelize.define('Question', attributes,{timestamps: false});
 }

@@ -8,9 +8,11 @@ function model(sequelize) {
         username: { type: DataTypes.STRING, allowNull: false },
         email: { type: DataTypes.STRING, allowNull: false },
         hash: { type: DataTypes.STRING, allowNull: false }
+       
     };
 
     const options = {
+        timestamps: false,
         defaultScope: {
             // exclude hash by default
             attributes: { include: ['hash'] }

@@ -21,7 +21,8 @@ admin = (req, res) => {
 
 addQuestion = async(req,res)=>{
     let connection = await pool.getMysqlPool()
-    connection.query("create database vinay");
+    
+    connection.query(`use Quizzitdb;insert into Questions (questionStatement,correctAnswer,option1,option2,option3,option4) values (\`${req.body.question}\`,\`${req.body.correctAns}\`,\`${req.body.option1}\`,\`${req.body.option2}\`,\`${req.body.option3}\`,\`${req.body.option4}\`);`);
     console.log("aarae")
     res.render("admin")
 }
