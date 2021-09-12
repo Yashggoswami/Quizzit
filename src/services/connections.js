@@ -5,7 +5,7 @@ const { Sequelize } = require('sequelize')
 
 module.exports = db = {db:initialize,getMysqlPool:getMysqlPool};
 
-initialize();
+// initialize();
 
 async function getMysqlPool() {
 const { host, port, user, password, database } = config.database;
