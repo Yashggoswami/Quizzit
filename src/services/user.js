@@ -13,15 +13,18 @@ module.exports = {
 };
 
 async function authenticate({ username, hash }) {
+    
     const user = await db.User.findOne({ where: { username } });
     // const user = await db.User.scope('withHash').findOne({ where: { username } });
 
     if (!user || (hash !== user.hash))
         throw 'Username or password is incorrect';
 
-    // authentication successful
-    const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '7d' });
-    return { ...omitHash(user.get()), token };
+        // authentication successful
+        // const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '7d' });
+        console.log("token");
+    return user;
+    // return { ...omitHash(user.get()), token };
 }
 
 async function getAll() {

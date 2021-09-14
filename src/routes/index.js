@@ -3,6 +3,7 @@ const user = require('../controllers/user')
 const proj = require('../controllers/project')
 // <------------- all routing work will be done here ----------->
 app.get('/login',user.login)
+app.get('/logout',user.logout)
 app.get('/admin',proj.admin)
 app.post('/addQuestion',proj.addQuestion)
 // app.post('/authenticate/:username/:password',user.authenticate)
