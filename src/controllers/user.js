@@ -19,7 +19,7 @@ register = (req, res) => {
 authenticateSchema = (req, res, next) => {
     const schema = Joi.object({
         username: Joi.string().required(),
-        password: Joi.string().required()
+        hash: Joi.string().required()
     });
     validateRequest(req, next, schema);
 }

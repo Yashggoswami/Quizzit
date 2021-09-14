@@ -12,10 +12,11 @@ module.exports = {
     delete: _delete
 };
 
-async function authenticate({ username, password }) {
-    const user = await db.User.scope('withHash').findOne({ where: { username } });
+async function authenticate({ username, hash }) {
+    const user = await db.User.findOne({ where: { username } });
+    // const user = await db.User.scope('withHash').findOne({ where: { username } });
 
-    if (!user || !(await bcrypt.compare(password, user.hash)))
+    if (!user || (hash !== user.hash))
         throw 'Username or password is incorrect';
 
     // authentication successful
