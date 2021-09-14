@@ -1,47 +1,56 @@
 {{!-- login front- end coding will be done here --}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizzit</title>
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
         rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/register.css">
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
-     <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
-     <link rel="stylesheet" type="text/css" href="/css/login.css">
+    {{!--
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css"> --}}
+    <link rel="stylesheet" type="text/css" href="/css/footer.css">
     <base href="/">
 </head>
+
 <body>
-    {{>header}}
-   <div class="container">
-           <div class="registration-form">
+    <div class="navbar">
+        {{>header}}
+    </div>
+    <div class="container">
+        <div class="registration-form">
             <form action='/authenticate' method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control item" name="username" id="username" placeholder="Username" required>
+                    <input type="text" class="form-control item" name="username" id="username" placeholder="Username"
+                        required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control item" name="password" id="password" placeholder="Password" required>
+                    <input type="password" class="form-control item" name="password" id="password"
+                        placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-block create-account">login</button>
                 </div>
                 <div class="form-group">
-                    <p style="align-content:center">
+                    <p class = "login-link">
                         <a href="/signup">
-                           Create an account?
+                            Create an account?
                         </a>
                     </p>
                 </div>
             </form>
         </div>
-   </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-    <script src="/js/nav.js"></script>
+    </div>
+    {{!-- <div class="footer"> --}}
+        {{>footer}}
+        {{!-- </div> --}}
     <script src="/js/register.js"></script>
+    <script src="/js/nav.js"></script>
 </body>
+
 </html>
