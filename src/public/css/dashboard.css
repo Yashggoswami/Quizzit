@@ -6,7 +6,7 @@
 body{
     display:grid;
     grid-template-columns: repeat(3,1fr);
-    grid-template-rows:6rem 1fr;
+    grid-template-rows:6rem 1fr 6rem;
     /* grid-template-areas:"navbar navbar navbar"
     "container container container"; */
 }
@@ -24,8 +24,119 @@ body{
     grid-row-start:2;
     grid-row-end:3;
     width:100%;
-    height:71vh;
+    height:75vh;
+    /* background-color:#f2f2f2; */
+    margin-bottom:-10rem;
     display:grid;
    align-items:center;
    justify-items:center;
+}
+
+.footer{
+    grid-area: "footer";
+    grid-column-start: 1;
+    grid-column-end:4;
+    grid-row-start:3;
+    grid-row-end:4;
+    width:100%;
+}
+
+
+.wrapper {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.button {
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+}
+.button:before,
+.button:after {
+	content: "";
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	border: 2px solid red;
+	top: -10px;
+	left: 50%;
+	z-index: 1;
+	margin-left: -40px;
+	transition: all 1s ease 0s;
+}
+.button:before {
+	animation: rotate 20s infinite linear;
+}
+.button:after {
+	animation: rotate 25s infinite linear;
+}
+.button__text {
+	position: relative;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 50px;
+	border-radius: 50px;
+	font-size: 24px;
+	text-transform: uppercase;
+	color: white;
+	letter-spacing: 10px;
+	transition: all 0.8s ease 0s;
+	top: 0;
+	overflow: hidden;
+}
+.button__text:before,
+.button__text:after {
+	content: "";
+	position: absolute;
+	width: 50%;
+	height: 100%;
+	background-color: black;
+	transition: all 0.8s ease 0s;
+}
+.button__text:before {
+	left: 0;
+	z-index: 2;
+}
+.button__text:after {
+	right: 0;
+}
+.button__text span {
+	position: relative;
+	z-index: 2;
+}
+.button:hover:before,
+.button:hover:after {
+	left: 100%;
+	opacity: 0;
+}
+.button:hover .button__text {
+	top: -10px;
+	color: #fff;
+	transition: all 0.8s ease 0s;
+	box-shadow: 0 5px 0 0 #0c5b52;
+}
+.button:hover .button__text:before,
+.button:hover .button__text:after {
+	background-color: slateblue;
+}
+.button:hover .button__text:before {
+	width: 100%;
+}
+.button:active .button__text {
+	top: -7px;
+	transition: all 0.1s ease 0s;
+	box-shadow: 0 5px 0 0 #0c5b52;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
