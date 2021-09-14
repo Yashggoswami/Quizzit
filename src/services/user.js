@@ -37,7 +37,7 @@ async function create(params) {
     if (await db.User.findOne({ where: { username: params.username } })) {
         throw 'Username "' + params.username + '" is already taken';
     }
-    // hash password
+    // hash password is added
     if (params.password) {
         bcrypt.hash(params.password, 10, async function (err, hash) {
             // Store hash in database here
