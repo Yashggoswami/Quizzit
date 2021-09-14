@@ -24,7 +24,7 @@ register = (req, res) => {
 authenticateSchema = (req, res, next) => {
     const schema = Joi.object({
         username: Joi.string().required(),
-        hash: Joi.string().required()
+        password: Joi.string().required()
     });
     validateRequest(req, next, schema);
 }
@@ -50,8 +50,9 @@ registerSchema = (req, res, next) => {
     const schema = Joi.object({
         username: Joi.string().required(),
         email: Joi.string().required(),
-        hash: Joi.string().min(6).required()
+        password: Joi.string().min(6).required()
     });
+    console.log("schema bna");
     validateRequest(req, next, schema);
 }
 

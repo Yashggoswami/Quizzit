@@ -12,28 +12,25 @@ module.exports = {
     delete: _delete
 };
 
-async function authenticate({ username, hash }) {
-    
-    const user = await db.User.findOne({ where: { username } });
-    // const user = await db.User.scope('withHash').findOne({ where: { username } });
+async function authenticate({ username, password }) {
 
-    if (!user || (hash !== user.hash))
-        throw 'Username or password is incorrect';
+    // const user = await db.User.findOne({ where: { username } });
+    const user = await db.User.scope('withHash').findOne({ where: { username } });
 
-        // authentication successful
-        // const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '7d' });
-        console.log("token");
+    if (!user)
+        throw 'Incorrect Username';
+    let flag = false;
+    await bcrypt.compare(password, user.password, async function (err, result) {
+        if (result) {
+            console.log("It matches!")
+        }
+        else {
+            console.log("Invalid password!");
+        }
+    })
     return user;
-    // return { ...omitHash(user.get()), token };
 }
 
-async function getAll() {
-    return await db.User.findAll();
-}
-
-async function getById(id) {
-    return await getUser(id);
-}
 
 async function create(params) {
     // validate
@@ -42,11 +39,12 @@ async function create(params) {
     }
     // hash password
     if (params.password) {
-        params.hash = await bcrypt.hash(params.password, 10);
+        bcrypt.hash(params.password, 10, async function (err, hash) {
+            // Store hash in database here
+            params.password = hash;
+            await db.User.create(params);
+        });
     }
-
-    // save user
-    await db.User.create(params);
 }
 
 async function update(id, params) {
@@ -68,6 +66,14 @@ async function update(id, params) {
     await user.save();
 
     return omitHash(user.get());
+}
+
+async function getAll() {
+    return await db.User.findAll();
+}
+
+async function getById(id) {
+    return await getUser(id);
 }
 
 async function _delete(id) {

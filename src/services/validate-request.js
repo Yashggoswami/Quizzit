@@ -10,6 +10,7 @@ function validateRequest(req, next, schema) {
     if (error) {
         next(`Validation error: ${error.details.map(x => x.message).join(', ')}`);
     } else {
+        console.log("validate ho gya");
         req.body = value;
         next();
     }
