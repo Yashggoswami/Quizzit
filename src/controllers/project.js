@@ -9,7 +9,12 @@ const connections = require('../services/connections')
 admin = (req, res) => {
     res.render('admin')
 }
-
+quiz = (req, res) => {
+    res.render('quiz-board')
+}
+quiztest = (req, res) => {
+    res.render('quiz-board-test')
+}
 
 // let connection = mysql.createConnection({
 //         "host":"localhost",
@@ -31,4 +36,4 @@ addQuestion = async(req,res)=>{
     
 }
 
-module.exports = {admin:admin,addQuestion:addQuestion}
+module.exports = {quiz:quiz,quiztest:quiztest,admin:admin,addQuestion:addQuestion}
