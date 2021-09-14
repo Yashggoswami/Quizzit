@@ -10,6 +10,12 @@ login = (req, res) => {
     res.render("login")
 }
 
+logout = (req, res) => {
+    req.session.destroy();
+    res.redirect("/login")
+}
+
+
 register = (req, res) => {
     res.render("register")
 }
@@ -25,7 +31,18 @@ authenticateSchema = (req, res, next) => {
 
 authenticate = (req, res, next) => {
     userService.authenticate(req.body)
-        .then(user => res.json(user))
+        .then((user) =>{
+        req.session.username = user.username;
+        req.session.id = user.id;
+        req.session.save((err)=>{
+            if(err){
+                res.flash("info","some error occurred");
+                res.redirect('/');
+            }else{
+                res.redirect('/');
+            }
+        })
+        })     
         .catch(next);
 }
 
@@ -33,14 +50,26 @@ registerSchema = (req, res, next) => {
     const schema = Joi.object({
         username: Joi.string().required(),
         email: Joi.string().required(),
-        hash: Joi.string().min(6).required()
+        password: Joi.string().min(6).required()
     });
+    console.log("schema bna");
     validateRequest(req, next, schema);
 }
 
 registeruser = (req, res, next) => {
     userService.create(req.body)
-        .then(() => res.json({ message: 'Registration successful' }))
+    .then((user) =>{
+        req.session.username = req.body.username;
+        req.session.id = req.body.id;
+        req.session.save((err)=>{
+            if(err){
+                res.flash("info","some error occurred");
+                res.redirect('/');
+            }else{
+                res.redirect('/');
+            }
+        })
+        }) 
         .catch(next);
 }
 
@@ -82,5 +111,5 @@ registeruser = (req, res, next) => {
 //         .catch(next);
 // }
 
-module.exports = { login: login, register: register,authenticate: authenticate,
+module.exports = {login: login,logout:logout,register: register,authenticate: authenticate,
     authenticateSchema:authenticateSchema,registerSchema:registerSchema,registeruser:registeruser}
