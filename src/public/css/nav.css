@@ -6,8 +6,9 @@ body{
     overflow-x: hidden;
 }
 nav{
+    /* grid-area:"nav-links"; */
     height: 6rem;
-    width: 100vw;
+    width: 100%;
     color: #f2f5f7;
     font-family: sans-serif;
     letter-spacing: 1px;
@@ -18,9 +19,13 @@ nav{
     position: fixed;
     z-index: 10;
 }
-
-/*Styling logo*/
 .logo{
+    display:flex;
+    align-items: center;
+    justify-items:center;
+}
+/*Styling logo*/
+.logo > h1{
     padding:1vh 1vw;
     text-align: center;
 }
