@@ -1,6 +1,7 @@
 {{!-- user dashboard front end will be here --}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,15 +9,27 @@
     <title>Quizzit</title>
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
     <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/css/footer.css">
     <base href="/">
 </head>
+
 <body>
     <div class="navbar">
         {{>header}}
     </div>
-   <div class="container">
-           <h1 class="head1">yash goswami</h1>
-   </div>
-   <script src="/js/nav.js"></script>
+    <div class="container">
+        <div class="wrapper">
+            <a href="#" class="button">
+                <span class="button__text">
+                    <span>Start Quiz</span>
+                </span>
+            </a>
+        </div>
+    </div>
+    {{!-- <div class="footer"> --}}
+        {{>footer}}
+    {{!-- </div> --}}
+    <script src="/js/nav.js"></script>
 </body>
+
 </html>
