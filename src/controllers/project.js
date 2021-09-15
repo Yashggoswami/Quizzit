@@ -1,16 +1,20 @@
 // project backend functionalities will be written here
-const db = require('mysql2')
-const { restart } = require('nodemon')
-const pool = require('../services/connections')
+
+const { restart } = require('nodemon');
+const pool = require('../services/connections');
 // const mysql = require('mysql2')
+const { Sequelize } = require('sequelize');
 const connections = require('../services/connections')
 
 
 admin = (req, res) => {
     res.render('admin')
 }
-quiz = (req, res) => {
-    res.render('quiz-board')
+quiz = async (req, res) => {
+    return await pool.Question.findAll({ order: Sequelize.literal('rand()'), limit: 2 }).then((question) => {
+        // single random encounter
+        res.send(question);
+    }); 
 }
 quiztest = (req, res) => {
     res.render('quiz-board-test')
