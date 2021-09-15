@@ -11,6 +11,10 @@ admin = (req, res) => {
 quiz = (req, res) => {
     res.render('quiz-board')
 }
+
+result = (req, res) => {
+    res.render('result')
+}
 //quiz test test link
 quiztest = async (req, res) => {
     return await pool.Question.findAll({ order: Sequelize.literal('rand()'), limit: 2 }).then((question) => {
@@ -39,4 +43,4 @@ addQuestion = async(req,res)=>{
     
 }
 
-module.exports = {quiz:quiz,quiztest:quiztest,admin:admin,addQuestion:addQuestion}
+module.exports = {quiz:quiz,quiztest:quiztest,admin:admin,addQuestion:addQuestion,result:result}
