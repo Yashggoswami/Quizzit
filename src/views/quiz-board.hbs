@@ -1,6 +1,7 @@
 {{!-- quiz board front end will be done here --}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,28 +10,43 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/quiz.css">
 </head>
+
 <body>
     <div class="container-fluid">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                  <span class="d-flex align-items-center pt-3">
-            <span id="prev"> <button class="btn btn-primary">Previous</button> </span>
-            <span id="next" class="d-flex justify-content-sm-end"> <button class="btn btn-success">Next</button> </span>
-             </span>
-            </div>
-            <div class="modal-body">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
-                <h3>Q. What does CSS stands for?</h3>
-                <div class="col-xs-3 5"> </div>
-                <div class="quiz" id="quiz" data-toggle="buttons"> <label class="element-animation1 btn btn-lg btn-danger btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1"> Computer Style Sheets</label> <label class="element-animation2 btn btn-lg btn-danger btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">Cascading Style Sheets</label> <label class="element-animation3 btn btn-lg btn-danger btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">Creative Style Sheets</label> <label class="element-animation4 btn btn-lg btn-danger btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4"> Colorful Style Sheets </label> </div>
-            </div>
-           
+                    <div class="header-item prev"><button class="btn btn-primary">Previous</button></div>
+                    <div class="header-item timer" id="timer"></div>
+                    <div class="header-item next"><button class="btn btn-success">Next</button></div>
+                </div>
+                <div class="modal-body">
+
+                    <h3>Q. What does CSS stands for?</h3>
+                    <div class="col-xs-3 5"> </div>
+                    <div class="quiz" id="quiz" data-toggle="buttons"> <label
+                            class="element-animation1 btn btn-lg btn-danger btn-block"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio"
+                                name="q_answer" value="1"> Computer Style Sheets</label> <label
+                            class="element-animation2 btn btn-lg btn-danger btn-block"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio"
+                                name="q_answer" value="2">Cascading Style Sheets</label> <label
+                            class="element-animation3 btn btn-lg btn-danger btn-block"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio"
+                                name="q_answer" value="3">Creative Style Sheets</label> <label
+                            class="element-animation4 btn btn-lg btn-danger btn-block"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio"
+                                name="q_answer" value="4"> Colorful Style Sheets </label> </div>
+                </div>
+
             </div>
         </div>
     </div>
-</div>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/countdown.js"></script>
+
 </body>
+
 </html>
