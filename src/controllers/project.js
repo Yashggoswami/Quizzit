@@ -7,9 +7,11 @@ const {Sequelize} = require('sequelize');
 admin = (req, res) => {
     res.render('admin')
 }
+//quiz test
 quiz = (req, res) => {
     res.render('quiz-board')
 }
+//quiz test test link
 quiztest = async (req, res) => {
     return await pool.Question.findAll({ order: Sequelize.literal('rand()'), limit: 2 }).then((question) => {
         // single random encounter
