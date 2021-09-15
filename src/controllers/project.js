@@ -9,8 +9,11 @@ const connections = require('../services/connections')
 admin = (req, res) => {
     res.render('admin')
 }
-quiz = (req, res) => {
-    res.render('quiz-board')
+quiz = async (req, res) => {
+    return await pool.Question.findAll({ order: Sequelize.literal('rand()'), limit: 2 }).then((question) => {
+        // single random encounter
+        res.send(question);
+    }); 
 }
 quiztest = (req, res) => {
     res.render('quiz-board-test')
