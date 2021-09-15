@@ -6,6 +6,26 @@ body {
     align-items:center;
     justify-items:center;
 }
+
+.modal-header{
+    background-color: transparent;
+    color: inherit;
+    width:100%;
+    display:flex;
+}
+
+.header-item{
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+}
+
+.timer{
+    text-align:center;
+    color:black;
+    font-family: fantasy;
+    font-size: x-large;
+}
 .btn-danger{
     color:white;
     background-color: DodgerBlue;
@@ -150,10 +170,6 @@ label .glyphicon {
     }
 }
 
-.modal-header {
-    background-color: transparent;
-    color: inherit
-}
 
 .modal-body {
     min-height: 300px
