@@ -17,10 +17,27 @@ result = (req, res) => {
 }
 //quiz test test link
 quiztest = async (req, res) => {
-    return await pool.Question.findAll({ order: Sequelize.literal('rand()'), limit: 5 }).then((question) => {
-        // single random encounter
-        res.send(question);
-    }); 
+    return await pool.Question.findAll({ order: Sequelize.literal('rand()'), limit: 10 }).then((question) => {
+        
+        // deleting the correct answer key and value pair and formatting the necessary data
+        que = []
+        for(let q in question){
+            temp = question[q]['dataValues'];
+            delete temp.correctAnswer;
+            que.push(temp);
+        }
+
+        req.session.questionSet = que;
+        req.session.save((err)=>{
+            if(err)
+                throw err
+            else
+                res.redirect('/quiz')
+        })
+
+        // res.send(que);
+        
+    }).then().catch(); 
 }
 
 // let connection = mysql.createConnection({
