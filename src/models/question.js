@@ -30,10 +30,10 @@ function model(sequelize) {
             type:DataTypes.STRING,
             allowNull:false
         },
-        option5:{
-            type:DataTypes.STRING,
-            allowNull:false
-        },
+        // option5:{
+        //     type:DataTypes.STRING,
+        //     allowNull:false
+        // },
         correctAnswer:{
             type:DataTypes.STRING,
             allowNull:false
