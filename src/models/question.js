@@ -14,10 +14,6 @@ function model(sequelize) {
             type:DataTypes.STRING,
             allowNull: false
         },
-        correctAnswer:{
-            type:DataTypes.STRING,
-            allowNull:false
-        },
         option1:{
             type:DataTypes.STRING,
             allowNull:false
@@ -31,6 +27,14 @@ function model(sequelize) {
             allowNull:false
         } ,
         option4:{
+            type:DataTypes.STRING,
+            allowNull:false
+        },
+        option5:{
+            type:DataTypes.STRING,
+            allowNull:false
+        },
+        correctAnswer:{
             type:DataTypes.STRING,
             allowNull:false
         }
