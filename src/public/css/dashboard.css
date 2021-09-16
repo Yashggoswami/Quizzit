@@ -31,7 +31,11 @@ body{
    align-items:center;
    justify-items:center;
 }
-
+#button-a{
+	border: hidden;
+	background-color: white;
+}
+   
 .footer{
     grid-area: "footer";
     grid-column-start: 1;
