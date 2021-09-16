@@ -17,7 +17,7 @@ result = (req, res) => {
 }
 //quiz test test link
 quiztest = async (req, res) => {
-    return await pool.Question.findAll({ order: Sequelize.literal('rand()'), limit: 2 }).then((question) => {
+    return await pool.Question.findAll({ order: Sequelize.literal('rand()'), limit: 5 }).then((question) => {
         // single random encounter
         res.send(question);
     }); 
