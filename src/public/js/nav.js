@@ -3,9 +3,12 @@ const navLinks = document.querySelector(".nav-links");
 const links = document.querySelectorAll(".nav-links li");
 
 function myFunction() {
-   
-    alert("Hello");
-      }
+
+
+   swal("Here's the title!", "...and here's the text!");
+
+}
+
 hamburger.addEventListener('click', ()=>{
    //Animate Links
     navLinks.classList.toggle("open");
@@ -13,7 +16,7 @@ hamburger.addEventListener('click', ()=>{
         link.classList.toggle("fade");
     });
 
-    //Hamburger Animation
-    hamburger.classList.toggle("toggle");
-});
 
+    //Hamburger Animation
+    hamburger.classList.toggle("toggle")
+});
