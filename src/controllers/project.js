@@ -27,13 +27,7 @@ quiztest = async (req, res) => {
             que.push(temp);
         }
 
-        req.session.questionSet = que;
-        req.session.save((err)=>{
-            if(err)
-                throw err
-            else
-                res.redirect('/quiz')
-        })
+        res.send(que);
 
         // res.send(que);
         
