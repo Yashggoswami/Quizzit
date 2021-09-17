@@ -1,56 +1,29 @@
-$(function(){
-	var btn = $('.btn'), bg_1 = $('.bg-1'), bg_2 = $('.bg-2'), ang_a = $('.ang-a'), ang_b = $('.ang-b'), ang_c = $('.ang-c'), text = $('.text'), glow = $('.glow'), dots = $('.dots'), shine = $('.shine');
-	var start = function(){
-		ang_a.removeClass('d-none').removeClass(ang_a.data('in')).addClass(ang_a.data('in'));
-		ang_b.removeClass('d-none').removeClass(ang_b.data('in')).addClass(ang_b.data('in'));
-		ang_c.removeClass('d-none').removeClass(ang_c.data('in')).addClass(ang_c.data('in'));
-		bg_2.removeClass('d-none').removeClass(bg_2.data('out')).addClass(bg_2.data('in'));
-		setTimeout(function(){
-			bg_1.removeClass('d-none').removeClass(bg_1.data('out')).addClass(bg_1.data('in'));
-		},500);
-		btn.fadeOut(200);
-	}
-	btn.on('click',start);
-	bg_2.off().on('animationend webkitAnimationEnd oAnimationEnd mozAnimationEnd',function(){
-		setTimeout(function(){
-		bg_2.fadeOut('fast').addClass('d-none').removeClass(bg_2.data('in'));
-			text.removeClass('d-none').addClass(text.data('in'));
-		},600);
-	});
-	text.off().on('animationend webkitAnimationEnd oAnimationEnd mozAnimationEnd',function(){
-		setTimeout(function(){
-			text.addClass('txt-ind');
-			glow.removeClass('d-none').addClass(glow.data('in'));
-			dots.removeClass('d-none');
-			shine.removeClass('d-none').addClass(shine.data('in'));
-		},50);
-		
-	});
-	glow.off().on('animationend webkitAnimationEnd oAnimationEnd mozAnimationEnd',function(){
-		bg_2.removeAttr('style').removeClass('d-none').addClass(bg_2.data('out'));
-	});
-	shine.off().on('animationend webkitAnimationEnd oAnimationEnd mozAnimationEnd',function(){
-		setTimeout(function(){
-			dots.fadeOut(300);
-			glow.fadeOut(500);
-		},1000);
-		setTimeout(function(){
-			shine.fadeOut(400);
-			bg_1.removeClass(bg_1.data('in')).addClass(bg_1.data('out'));
-		},2000);
-		setTimeout(function(){
-			text.removeClass(text.data('in')).addClass(text.data('out'));
-			setTimeout(function(){
-				$(document).trigger('animate:reset');
-			},500);
-		},2500);
-	});
-
-	$(document).on('animate:reset',function(){
-		$('.el').each(function(){
-			$(this).addClass('d-none').removeClass($(this).data('in')).removeClass($(this).data('out')).removeAttr('style');
-		});
-		text.removeClass('txt-ind');
-		btn.fadeIn(200);
-	});
-});
+for(i=0; i<100; i++) {
+    // Random rotation
+    var randomRotation = Math.floor(Math.random() * 360);
+      // Random Scale
+    var randomScale = Math.random() * 1;
+    // Random width & height between 0 and viewport
+    var randomWidth = Math.floor(Math.random() * Math.max(document.documentElement.clientWidth, window.innerWidth || 0));
+    var randomHeight =  Math.floor(Math.random() * Math.max(document.documentElement.clientHeight, window.innerHeight || 500));
+    
+    // Random animation-delay
+    var randomAnimationDelay = Math.floor(Math.random() * 5);
+    console.log(randomAnimationDelay);
+  
+    // Random colors
+    var colors = ['#0CD977', '#FF1C1C', '#FF93DE', '#5767ED', '#FFC61C', '#8497B0']
+    var randomColor = colors[Math.floor(Math.random() * colors.length)];
+  
+    // Create confetti piece
+    var confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.top=randomHeight + 'px';
+    confetti.style.right=randomWidth + 'px';
+    confetti.style.backgroundColor=randomColor;
+    // confetti.style.transform='scale(' + randomScale + ')';
+    confetti.style.obacity=randomScale;
+    confetti.style.transform='skew(15deg) rotate(' + randomRotation + 'deg)';
+    confetti.style.animationDelay=randomAnimationDelay + 's';
+    document.getElementById("confetti-wrapper").appendChild(confetti);
+  }
