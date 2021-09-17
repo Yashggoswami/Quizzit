@@ -17,16 +17,15 @@ $(document).ready(function () {
                 .done((data) => {
                     // document.getElementById('#timer').innerHTML =
                     //   01 + ":" + 11;
-                      $('#timer').text( 00 + ":" + 05);
-                        startTimer();
+                    window.data = data;
+                    $('#timer').text(15 + ":" + 01);
+                    startTimer();
 
                     // code for adding quiz functionality will be done here
+                    counter = 1
+                    currentquestion(counter);
 
-                    $('#questionstatement').text(data[0].questionStatement)
-                    $('#option1').text(data[0].option1)
-                    $('#option2').text(data[0].option2)
-                    $('#option3').text(data[0].option3)
-                    $('#option4').text(data[0].option4)
+
 
 
 
@@ -42,6 +41,42 @@ $(document).ready(function () {
         }
     })
 
+    $('#previous').click(() => {
+        let presentQue = $('#questionstatement').text();
+        let questionNumber = presentQue.split(/[.]+/);
+        let counter = questionNumber[0]-1;
+        currentquestion(counter);
+
+    })
+
+    $('#next').click(() => {
+        let presentQue = $('#questionstatement').text();
+        let questionNumber = presentQue.split(/[.]+/);
+        let counter = parseInt(questionNumber[0])+1;
+        currentquestion(counter);
+
+    })
+
+    function currentquestion(counter) {
+        if (counter == 1) {
+            // previous
+            $('#previous').attr('style', 'visibility:hidden');
+        } else {
+            $('#previous').attr('style', 'visibility:visible');
+        }
+
+        if (counter == 10) {
+            $('#next').attr('style', 'visibility:hidden');
+        } else {
+            $('#next').attr('style', 'visibility:visible');
+        }
+
+        $('#questionstatement').text(counter + ". " + window.data[counter - 1].questionStatement)
+        $('#option1').text(window.data[counter - 1].option1)
+        $('#option2').text(window.data[counter - 1].option2)
+        $('#option3').text(window.data[counter - 1].option3)
+        $('#option4').text(window.data[counter - 1].option4)
+    }
     function startTimer() {
         var presentTime = $('#timer').text();
         var timeArray = presentTime.split(/[:]+/);
@@ -51,9 +86,9 @@ $(document).ready(function () {
         if (m < 0) {
             //result wala page
             return location.replace('/result')
-            
+
         }
-        $('#timer').text( m + ":" + s);
+        $('#timer').text(m + ":" + s);
         setTimeout(startTimer, 1000);
 
     }
