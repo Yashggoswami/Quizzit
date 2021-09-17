@@ -24,6 +24,7 @@ quiztest = async (req, res) => {
         for(let q in question){
             temp = question[q]['dataValues'];
             delete temp.correctAnswer;
+            temp.submittedAnswer = undefined;
             que.push(temp);
         }
 

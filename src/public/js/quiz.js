@@ -44,7 +44,7 @@ $(document).ready(function () {
     $('#previous').click(() => {
         let presentQue = $('#questionstatement').text();
         let questionNumber = presentQue.split(/[.]+/);
-        let counter = questionNumber[0]-1;
+        let counter = questionNumber[0] - 1;
         currentquestion(counter);
 
     })
@@ -52,10 +52,16 @@ $(document).ready(function () {
     $('#next').click(() => {
         let presentQue = $('#questionstatement').text();
         let questionNumber = presentQue.split(/[.]+/);
-        let counter = parseInt(questionNumber[0])+1;
+        let counter = parseInt(questionNumber[0]) + 1;
+        currResult();
         currentquestion(counter);
 
     })
+
+    function currResult() {
+        alert($('input[name=option]:checked', '#inputform').val())
+
+    }
 
     function currentquestion(counter) {
         if (counter == 1) {
@@ -76,6 +82,17 @@ $(document).ready(function () {
         $('#option2').text(window.data[counter - 1].option2)
         $('#option3').text(window.data[counter - 1].option3)
         $('#option4').text(window.data[counter - 1].option4)
+
+        $('#inputOption1').val(window.data[counter - 1].option1)
+        $('#inputOption2').val(window.data[counter - 1].option2)
+        $('#inputOption3').val(window.data[counter - 1].option3)
+        $('#inputOption4').val(window.data[counter - 1].option4)
+
+        $("input:radio[name='option']").each(function (i) {
+            this.checked = false;
+        });
+
+
     }
     function startTimer() {
         var presentTime = $('#timer').text();
