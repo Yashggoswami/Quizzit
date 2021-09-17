@@ -17,7 +17,7 @@ $(document).ready(function () {
                 .done((data) => {
                     // document.getElementById('#timer').innerHTML =
                     //   01 + ":" + 11;
-                      $('#timer').text( 00 + ":" + 05);
+                      $('#timer').text( 15 + ":" + 01);
                         startTimer();
 
                     // code for adding quiz functionality will be done here
