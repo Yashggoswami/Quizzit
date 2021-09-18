@@ -19,7 +19,15 @@
                 <div class="modal-header">
                     <div class="header-item prev" id="previous"><button class="btn btn-primary">Previous</button></div>
                     <div class="header-item timer" id="timer"></div>
-                    <div class="header-item next" id="next"><button class="btn btn-success">Next</button></div>
+                    <div class="header-item">
+                        <button class="btn btn-success" id="next">Next</button>
+                        <form method="POST" action="/resultCalculation" id="submitForm">
+                            <input type="hidden" id="resultData" name="resultData">
+                            <button class="btn btn-success" type="button"
+                                id="submit">Submit</button>
+                            <input style="visibility: hidden;" id="submitButton" type="submit">
+                        </form>
+                    </div>
                 </div>
                 <div class="modal-body">
 
@@ -39,6 +47,7 @@
                                 class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input
                                 type="radio" name="q_answer" value="4"></label>
                     </form> --}}
+
                     <form id="inputform">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="option" id="inputOption1">
@@ -47,22 +56,19 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="option" id="inputOption2"
-                                checked>
+                            <input class="form-check-input" type="radio" name="option" id="inputOption2" checked>
                             <label id="option2" class="form-check-label" for="inputOption2">
                                 Default checked radio
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="option" id="inputOption3"
-                                checked>
+                            <input class="form-check-input" type="radio" name="option" id="inputOption3" checked>
                             <label id="option3" class="form-check-label" for="inputOption3">
                                 Default checked radio
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="option" id="inputOption4"
-                                checked>
+                            <input class="form-check-input" type="radio" name="option" id="inputOption4" checked>
                             <label id="option4" class="form-check-label" for="inputOption4">
                                 Default checked radio
                             </label>

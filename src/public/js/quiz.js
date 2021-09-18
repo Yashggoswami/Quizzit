@@ -41,6 +41,12 @@ $(document).ready(function () {
         }
     })
 
+    $('#submit').click(() => {
+        window.data[window.counter-1].submittedAnswer = $('input[name=option]:checked', '#inputform').val();
+        $('#resultData').val(JSON.stringify(window.data));
+        $('#submitButton').click();
+    })
+
     $('#previous').click(() => {
         let presentQue = $('#questionstatement').text();
         let questionNumber = presentQue.split(/[.]+/);
@@ -61,10 +67,6 @@ $(document).ready(function () {
 
     })
 
-    function currResult() {
-        console.log(window.counter-1)
-        window.data[window.counter-1].submittedAnswer = $('input[name=option]:checked', '#inputform').val();
-    }
 
     function currentquestion() {
         if (window.counter == 1) {
@@ -76,8 +78,11 @@ $(document).ready(function () {
 
         if (window.counter == 10) {
             $('#next').attr('style', 'visibility:hidden');
+            $('#submit').attr('style', 'visibility:visible');
+
         } else {
             $('#next').attr('style', 'visibility:visible');
+            $('#submit').attr('style', 'visibility:hidden');
         }
 
         $('#questionstatement').text(window.counter + ". " + window.data[window.counter - 1].questionStatement)
