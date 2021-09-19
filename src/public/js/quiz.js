@@ -22,8 +22,8 @@ $(document).ready(function () {
                     startTimer();
 
                     // code for adding quiz functionality will be done here
-                    counter = 1
-                    currentquestion(counter);
+                    window.counter = 1
+                    currentquestion();
 
 
 
@@ -41,41 +41,68 @@ $(document).ready(function () {
         }
     })
 
+    $('#submit').click(() => {
+        window.data[window.counter-1].submittedAnswer = $('input[name=option]:checked', '#inputform').val();
+        $('#resultData').val(JSON.stringify(window.data));
+        $('#submitButton').click();
+    })
+
     $('#previous').click(() => {
         let presentQue = $('#questionstatement').text();
         let questionNumber = presentQue.split(/[.]+/);
-        let counter = questionNumber[0]-1;
-        currentquestion(counter);
+        // currResult();
+        window.data[window.counter-1].submittedAnswer = $('input[name=option]:checked', '#inputform').val();
+        window.counter = questionNumber[0] - 1;
+        currentquestion();
 
     })
 
     $('#next').click(() => {
         let presentQue = $('#questionstatement').text();
         let questionNumber = presentQue.split(/[.]+/);
-        let counter = parseInt(questionNumber[0])+1;
-        currentquestion(counter);
+        // currResult();
+        window.data[window.counter-1].submittedAnswer = $('input[name=option]:checked', '#inputform').val();
+        window.counter = parseInt(questionNumber[0]) + 1;
+        currentquestion();
 
     })
 
-    function currentquestion(counter) {
-        if (counter == 1) {
+
+    function currentquestion() {
+        if (window.counter == 1) {
             // previous
             $('#previous').attr('style', 'visibility:hidden');
         } else {
             $('#previous').attr('style', 'visibility:visible');
         }
 
-        if (counter == 10) {
+        if (window.counter == 10) {
             $('#next').attr('style', 'visibility:hidden');
+            $('#submit').attr('style', 'visibility:visible');
+
         } else {
             $('#next').attr('style', 'visibility:visible');
+            $('#submit').attr('style', 'visibility:hidden');
         }
 
-        $('#questionstatement').text(counter + ". " + window.data[counter - 1].questionStatement)
-        $('#option1').text(window.data[counter - 1].option1)
-        $('#option2').text(window.data[counter - 1].option2)
-        $('#option3').text(window.data[counter - 1].option3)
-        $('#option4').text(window.data[counter - 1].option4)
+        $('#questionstatement').text(window.counter + ". " + window.data[window.counter - 1].questionStatement)
+        $('#option1').text(window.data[window.counter - 1].option1)
+        $('#option2').text(window.data[window.counter - 1].option2)
+        $('#option3').text(window.data[window.counter - 1].option3)
+        $('#option4').text(window.data[window.counter - 1].option4)
+
+        $('#inputOption1').val(window.data[window.counter - 1].option1)
+        $('#inputOption2').val(window.data[window.counter - 1].option2)
+        $('#inputOption3').val(window.data[window.counter - 1].option3)
+        $('#inputOption4').val(window.data[window.counter - 1].option4)
+
+        $("input:radio[name='option']").each(function (i) {
+            this.checked = false;
+        });
+
+        $(`input[name='option'][value='${window.data[window.counter - 1].submittedAnswer}']`).prop("checked",true);
+
+
     }
     function startTimer() {
         var presentTime = $('#timer').text();

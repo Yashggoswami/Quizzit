@@ -11,8 +11,49 @@ admin = (req, res) => {
 quiz = (req, res) => {
     res.render('quiz-board')
 }
+const resultCalculation = async(req,res)=>{
+    try{
+        console.log("aara")
+        let data = JSON.parse(req.body.resultData);
+        var arr = [];
+        // console.log(data);
+        for(let obj in data){
+            // console.log(data[obj]['question_id']);
+            arr.push(data[obj]['question_id']);
+        }
+        await pool.Question.findAll({
+            where: {
+              question_id: arr // Same as using `id: { [Op.in]: [1,2,3] }`
+            }}
+            ).then((result)=>{
+                var score = 0;
+               
+                for(let index in data){
+                    console.log(data[index]['submittedAnswer']+" "+result[index]['correctAnswer'])
+                    if(data[index]['submittedAnswer'] === result[index]['correctAnswer'])
+                    {
+                        score++;
+                    }
+                }
+                res.send(JSON.stringify(data)+"\n"+JSON.stringify(result)+"\n"+score);
+                // res.redirect('/result',{'score':score});
+            }).catch((err)=>{
+                console.log("error in query"+err)
+            })
 
+    }catch(err){
+        console.log("error"+err)
+    }
+
+
+    // data.array.forEach(element => {
+        
+    // });
+    // console.log(req.body)
+    
+}
 result = (req, res) => {
+    
     res.render('result')
 }
 //quiz test test link
@@ -24,6 +65,7 @@ quiztest = async (req, res) => {
         for(let q in question){
             temp = question[q]['dataValues'];
             delete temp.correctAnswer;
+            temp.submittedAnswer = undefined;
             que.push(temp);
         }
 
@@ -54,4 +96,4 @@ addQuestion = async(req,res)=>{
     
 }
 
-module.exports = {quiz:quiz,quiztest:quiztest,admin:admin,addQuestion:addQuestion,result:result}
+module.exports = {resultCalculation:resultCalculation,quiz:quiz,quiztest:quiztest,admin:admin,addQuestion:addQuestion,result:result}
