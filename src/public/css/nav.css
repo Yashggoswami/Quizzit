@@ -5,6 +5,12 @@
 body{
     overflow-x: hidden;
 }
+
+a:hover {
+    color:white;
+    background-color: transparent;
+    text-decoration:none;
+}
 nav{
     /* grid-area:"nav-links"; */
     height: 6rem;
@@ -34,13 +40,15 @@ nav{
     width: 5rem;
 }
 
-.bt{
+
+.bt {
+    color:#f2f5f7;
     text-decoration: none;
-     color:rgb(255, 255, 255);
+    margin: 0 0.7vw;
 }
 .login-button{
-    background-color: black;
-    border-color: black;
+    background-color:#131418;
+    border-color:#131418;
     text-transform: uppercase;
 }
 /*Styling Links*/
