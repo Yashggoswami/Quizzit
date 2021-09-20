@@ -13,47 +13,39 @@ quiz = (req, res) => {
 }
 const resultCalculation = async(req,res)=>{
     try{
-        console.log("aara")
         let data = JSON.parse(req.body.resultData);
         var arr = [];
-        // console.log(data);
         for(let obj in data){
-            // console.log(data[obj]['question_id']);
             arr.push(data[obj]['question_id']);
         }
         await pool.Question.findAll({
             where: {
-              question_id: arr // Same as using `id: { [Op.in]: [1,2,3] }`
+                question_id: arr // Same as using `id: { [Op.in]: [1,2,3] }`
             }}
             ).then((result)=>{
                 var score = 0;
-               
+                data.sort((a,b)=>{return a['question_id']-b['question_id']});
+                result.sort((a,b)=>{return a['question_id']-b['question_id']});
                 for(let index in data){
-                    console.log(data[index]['submittedAnswer']+" "+result[index]['correctAnswer'])
-                    if(data[index]['submittedAnswer'] === result[index]['correctAnswer'])
+                    if(data[index]['submittedAnswer'] == result[index]['correctAnswer'])
                     {
-                        score++;
+                        score+=1;
                     }
                 }
-                res.send(JSON.stringify(data)+"\n"+JSON.stringify(result)+"\n"+score);
-                // res.redirect('/result',{'score':score});
+                // res.send(JSON.stringify(data)+"\n"+JSON.stringify(result)+"\n"+score);
+                req.session.result = score;
+                req.session.save((err)=>{
+                    res.redirect('/result');
+                })
             }).catch((err)=>{
                 console.log("error in query"+err)
             })
 
     }catch(err){
         console.log("error"+err)
-    }
-
-
-    // data.array.forEach(element => {
-        
-    // });
-    // console.log(req.body)
-    
+    }    
 }
 result = (req, res) => {
-    
     res.render('result')
 }
 //quiz test test link
