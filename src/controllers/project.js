@@ -11,7 +11,40 @@ admin = (req, res) => {
 quiz = (req, res) => {
     res.render('quiz-board')
 }
+const resultCalculation = async(req,res)=>{
+    try{
+        let data = JSON.parse(req.body.resultData);
+        var arr = [];
+        for(let obj in data){
+            arr.push(data[obj]['question_id']);
+        }
+        await pool.Question.findAll({
+            where: {
+                question_id: arr // Same as using `id: { [Op.in]: [1,2,3] }`
+            }}
+            ).then((result)=>{
+                var score = 0;
+                data.sort((a,b)=>{return a['question_id']-b['question_id']});
+                result.sort((a,b)=>{return a['question_id']-b['question_id']});
+                for(let index in data){
+                    if(data[index]['submittedAnswer'] == result[index]['correctAnswer'])
+                    {
+                        score+=1;
+                    }
+                }
+                // res.send(JSON.stringify(data)+"\n"+JSON.stringify(result)+"\n"+score);
+                req.session.result = score;
+                req.session.save((err)=>{
+                    res.redirect('/result');
+                })
+            }).catch((err)=>{
+                console.log("error in query"+err)
+            })
 
+    }catch(err){
+        console.log("error"+err)
+    }    
+}
 result = (req, res) => {
     res.render('result')
 }
@@ -24,6 +57,7 @@ quiztest = async (req, res) => {
         for(let q in question){
             temp = question[q]['dataValues'];
             delete temp.correctAnswer;
+            temp.submittedAnswer = undefined;
             que.push(temp);
         }
 
@@ -54,4 +88,4 @@ addQuestion = async(req,res)=>{
     
 }
 
-module.exports = {quiz:quiz,quiztest:quiztest,admin:admin,addQuestion:addQuestion,result:result}
+module.exports = {resultCalculation:resultCalculation,quiz:quiz,quiztest:quiztest,admin:admin,addQuestion:addQuestion,result:result}

@@ -1,33 +1,25 @@
-{{!-- quiz board front end will be done here --}}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/result.css">
 </head>
-
 <body>
-   
-        <div class="modal-dialog">
-            <div class="modal-content">
-               <div class="header-item score" id="score">10/10</div>
-                <div class="header-item cong">Congratulations</div>
-                
 
-
-
-            
-    </div>
-    </div>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   
-
+<div class="wrapper">
+  <div class="modal">
+    <span class="emoji round">🏆</span>
+    <h1>Congratulation</h1>
+    <a href="#" class="modal-btn">Score is : <span >{{session.result}}</span>/10</a>
+    <a href="/" ><button class="home"  >home</button></a>
+  </div>
+  <div id="confetti-wrapper">
+  </div>
+</div>
+<script src="/js/result.js"></script>
 </body>
-
 </html>
+
