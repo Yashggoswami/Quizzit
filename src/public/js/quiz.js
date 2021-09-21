@@ -1,12 +1,15 @@
 $(document).ready(function () {
     Swal.fire({
-        title: 'important tips!',
-        text: 'Do you want to start quiz?',
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'ok'
+        title: '<div style="text-decoration:underline"><b>Important Instruction</b></div>',
+        //  text: 'Do you want to start quiz?',
+         // icon: 'info',
+         width: '600px',
+          html: '<hr><div style="font-size:large">1. Total time allocate to finish the quiz is 15 min </div>' +    '<br><div style="font-size:large">2. Total question is 10</div><hr> ',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'proceed'
+        
     }).then(function (result) {
         if (result.value) {
             $.ajax({

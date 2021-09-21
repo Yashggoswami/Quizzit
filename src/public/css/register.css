@@ -46,6 +46,18 @@ body{
     padding-top:6rem;
 } */
 
+#form-message{
+    background-color:rgb(255,232,232);
+    border:1px solid red;
+    color:red;
+    display:block;
+    font-size: 12px;
+    font-weight:bold;
+    margin-bottom:25px;
+    padding: 10px 20px;
+    
+}
+
 .registration-form{
     /* margin:10px; */
     /* background-color: #5691ff; */
