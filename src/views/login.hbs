@@ -25,6 +25,7 @@
     <div class="container">
         <div class="registration-form">
             <form action='/authenticate' method="post">
+                
                 <div class="form-group">
                     <input type="text" class="form-control item" name="username" id="username" placeholder="Username"
                         required>
@@ -33,6 +34,11 @@
                     <input type="password" class="form-control item" name="password" id="password"
                         placeholder="Password" required>
                 </div>
+                {{#if messages.info}}
+                <div class="form-group" id = "errorMessage" style="color:red;text-align:center">
+                    {{messages.info}}
+                </div>
+                {{/if}}
                 <div class="form-group">
                     <button type="submit" class="btn btn-block create-account">login</button>
                 </div>
