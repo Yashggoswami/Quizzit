@@ -30,20 +30,30 @@ authenticateSchema = (req, res, next) => {
 }
 
 authenticate = (req, res, next) => {
-    userService.authenticate(req.body)
-        .then((user) =>{
-        req.session.username = user.username;
-        req.session.id = user.id;
-        req.session.save((err)=>{
-            if(err){
-                res.flash("info","some error occurred");
-                res.redirect('/');
-            }else{
-                res.redirect('/');
-            }
-        })
+    return userService.authenticate(req.body)
+        .then((result) =>{
+        if(result === "Incorrect Username" || result === "Invalid password"){
+            throw result;
+        }else{
+            req.session.username = result.username;
+            req.session.id = result.id;
+            req.session.save((err)=>{
+                if(err){
+                    res.flash("info","some error occurred");
+                    res.redirect('/');
+                }else{
+                    res.redirect('/');
+                }
+            })
+        }
+
+       
         })     
-        .catch(next);
+        .catch((err)=>{
+            console.log(err);
+            res.redirect('/login');
+        }
+        );
 }
 
 registerSchema = (req, res, next) => {

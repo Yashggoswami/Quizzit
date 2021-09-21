@@ -16,19 +16,17 @@ async function authenticate({ username, password }) {
 
     // const user = await db.User.findOne({ where: { username } });
     const user = await db.User.scope('withHash').findOne({ where: { username } });
-
     if (!user)
-        throw 'Incorrect Username';
-    let flag = false;
-    await bcrypt.compare(password, user.password, async function (err, result) {
-        if (result) {
-            console.log("It matches!")
+        return 'Incorrect Username';
+    return await bcrypt.compare(password, user.password).then((result)=>{
+        if(result){
+            return user;
+        }else{
+            throw "Invalid password"
         }
-        else {
-            console.log("Invalid password!");
-        }
+    }).catch((err)=>{
+        return ""+err;
     })
-    return user;
 }
 
 
